@@ -1,0 +1,23 @@
+version: "3"
+
+services:
+  stable-diffusion-webui:
+    image: stable-diffusion-webui
+    build: .
+    container_name: stable-diffusion-webui
+    restart: always
+    command: ["--precision", "full", "--no-half", "--listen", "--port", "7860"]
+    ports:
+      - "7860:7860"
+    volumes:
+      - ../logs:/home/diffusion/stable-diffusion-webui/logs
+      - ../models:/home/diffusion/stable-diffusion-webui/models
+      - ../outputs:/home/diffusion/stable-diffusion-webui/outputs
+      - ../config:/home/diffusion/stable-diffusion-webui/config
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: all
+              capabilities: [gpu]
