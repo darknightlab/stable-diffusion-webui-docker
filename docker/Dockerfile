@@ -17,5 +17,5 @@ USER diffusion
 RUN cd /home/diffusion/ && wget https://raw.githubusercontent.com/AUTOMATIC1111/stable-diffusion-webui/master/webui.sh && sed -i '$ised -i '\''$d'\'' "${LAUNCH_SCRIPT}"' webui.sh && chmod +x webui.sh && bash webui.sh && rm webui.sh
 WORKDIR /home/diffusion/stable-diffusion-webui/
 RUN mkdir config && touch config/config.json config/ui-config.json && ln -s /home/diffusion/stable-diffusion-webui/config/config.json config.json && ln -s /home/diffusion/stable-diffusion-webui/config/ui-config.json ui-config.json
-ENTRYPOINT [ "logsave","/home/diffusion/stable-diffusion-webui/logs/logs.txt", "/home/diffusion/stable-diffusion-webui/venv/bin/python", "webui.py" ]
+ENTRYPOINT [ "logsave","/home/diffusion/stable-diffusion-webui/log/log.txt", "/home/diffusion/stable-diffusion-webui/venv/bin/python", "webui.py" ]
 CMD [ "--listen", "--port", "7860" ]
