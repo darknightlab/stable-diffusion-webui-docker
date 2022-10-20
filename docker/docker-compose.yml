@@ -6,7 +6,9 @@ services:
     build: .
     container_name: stable-diffusion-webui
     restart: always
-    command: ["--listen", "--port", "7860"]
+    command: []
+    environment:
+      - COMMANDLINE_ARGS=--listen --port 7860
     ports:
       - "7860:7860"
     volumes:
