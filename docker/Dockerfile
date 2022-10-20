@@ -18,7 +18,8 @@ RUN cd /home/diffusion/ && wget https://raw.githubusercontent.com/AUTOMATIC1111/
     && sed -i '$ised '\''$d'\'' "${LAUNCH_SCRIPT}" > "prepare_${LAUNCH_SCRIPT}"' webui.sh \
     && sed -i '$s/\${LAUNCH_SCRIPT}/prepare_\${LAUNCH_SCRIPT}/' webui.sh \
     && sed -i '$a\rm "prepare_''$''{LAUNCH_SCRIPT}"' webui.sh \
-    && chmod +x webui.sh && bash webui.sh && rm webui.sh
+    && chmod +x webui.sh && bash webui.sh && rm webui.sh \
+    && rm -rf /home/diffusion/.cache
 WORKDIR /home/diffusion/stable-diffusion-webui/
 RUN mkdir config && touch config/config.json config/ui-config.json && ln -s /home/diffusion/stable-diffusion-webui/config/config.json config.json && ln -s /home/diffusion/stable-diffusion-webui/config/ui-config.json ui-config.json
 ENTRYPOINT [ "logsave","/home/diffusion/stable-diffusion-webui/log/log.txt", "/home/diffusion/stable-diffusion-webui/venv/bin/python", "launch.py" ]
