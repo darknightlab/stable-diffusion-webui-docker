@@ -21,6 +21,9 @@ RUN cd /home/diffusion/ && wget https://raw.githubusercontent.com/AUTOMATIC1111/
     && chmod +x webui.sh && bash webui.sh && rm webui.sh \
     && rm -rf /home/diffusion/.cache
 WORKDIR /home/diffusion/stable-diffusion-webui/
-RUN mkdir config && touch config/config.json config/ui-config.json && ln -s /home/diffusion/stable-diffusion-webui/config/config.json config.json && ln -s /home/diffusion/stable-diffusion-webui/config/ui-config.json ui-config.json
+RUN mkdir config && touch config/config.json config/ui-config.json config/style.csv && \
+    ln -s /home/diffusion/stable-diffusion-webui/config/config.json config.json && \
+    ln -s /home/diffusion/stable-diffusion-webui/config/ui-config.json ui-config.json && \
+    ln -s /home/diffusion/stable-diffusion-webui/config/style.csv style.csv
 ENTRYPOINT [ "logsave","/home/diffusion/stable-diffusion-webui/log/log.txt", "/home/diffusion/stable-diffusion-webui/venv/bin/python", "launch.py" ]
 CMD []
