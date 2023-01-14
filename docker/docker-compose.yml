@@ -12,11 +12,11 @@ services:
     ports:
       - "7860:7860"
     volumes:
-      - ../log:/home/diffusion/stable-diffusion-webui/log
-      - ../models:/home/diffusion/stable-diffusion-webui/models
-      - ../outputs:/home/diffusion/stable-diffusion-webui/outputs
+      - ../data/log:/home/diffusion/stable-diffusion-webui/log
+      - ../data/models:/home/diffusion/stable-diffusion-webui/models
+      - ../data/outputs:/home/diffusion/stable-diffusion-webui/outputs
       - ../config:/home/diffusion/stable-diffusion-webui/config
-      - ../cache:/home/diffusion/.cache
+      - ../data/cache:/home/diffusion/.cache
     deploy:
       resources:
         reservations:
