@@ -17,7 +17,7 @@ COPY webui.sh /home/diffusion/webui.sh
 RUN chown diffusion:diffusion /home/diffusion/webui.sh
 USER diffusion
 RUN cd /home/diffusion/ \
-    && chmod +x webui.sh && bash webui.sh && rm webui.sh \
+    && chmod +x webui.sh && bash webui.sh --use-cpu all && rm webui.sh \
     && rm -rf /home/diffusion/.cache
 WORKDIR /home/diffusion/stable-diffusion-webui/
 RUN mkdir config && touch config/config.json config/ui-config.json config/style.csv && \
