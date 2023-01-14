@@ -13,11 +13,9 @@ RUN apt-get update && apt-get install -y \
     libxext6 \
     && rm -rf /var/lib/apt/lists/*
 RUN groupadd -r diffusion && useradd -r -g diffusion diffusion && mkdir -p /home/diffusion && chown -R diffusion:diffusion /home/diffusion
+COPY webui.sh /home/diffusion/webui.sh
 USER diffusion
-RUN cd /home/diffusion/ && wget https://raw.githubusercontent.com/AUTOMATIC1111/stable-diffusion-webui/master/webui.sh \
-    && sed -i '$ised '\''$d'\'' "${LAUNCH_SCRIPT}" > "prepare_${LAUNCH_SCRIPT}"' webui.sh \
-    && sed -i '$s/\${LAUNCH_SCRIPT}/prepare_\${LAUNCH_SCRIPT}/' webui.sh \
-    && sed -i '$a\rm "prepare_''$''{LAUNCH_SCRIPT}"' webui.sh \
+RUN cd /home/diffusion/ \
     && chmod +x webui.sh && bash webui.sh && rm webui.sh \
     && rm -rf /home/diffusion/.cache
 WORKDIR /home/diffusion/stable-diffusion-webui/
