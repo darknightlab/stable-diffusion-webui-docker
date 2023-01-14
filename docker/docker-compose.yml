@@ -2,7 +2,7 @@ version: "3"
 
 services:
   stable-diffusion-webui:
-    image: darknightlab/stable-diffusion-webui-Docker:latest
+    image: darknightlab/stable-diffusion-webui-docker:latest
     # build: .
     container_name: stable-diffusion-webui
     restart: always
