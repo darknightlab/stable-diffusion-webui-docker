@@ -14,6 +14,7 @@ RUN apt-get update && apt-get install -y \
     && rm -rf /var/lib/apt/lists/*
 RUN groupadd -r diffusion && useradd -r -g diffusion diffusion && mkdir -p /home/diffusion && chown -R diffusion:diffusion /home/diffusion
 COPY webui.sh /home/diffusion/webui.sh
+RUN chown diffusion:diffusion /home/diffusion/webui.sh
 USER diffusion
 RUN cd /home/diffusion/ \
     && chmod +x webui.sh && bash webui.sh && rm webui.sh \
