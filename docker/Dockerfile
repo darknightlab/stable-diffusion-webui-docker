@@ -17,7 +17,7 @@ RUN apt update && apt install -y \
     && rm -rf /var/lib/apt/lists/*
 
 RUN groupadd -r diffusion && useradd -r -g diffusion diffusion && mkdir -p /home/diffusion && chown -R diffusion:diffusion /home/diffusion
-COPY webui.sh /home/diffusion/webui.sh
+COPY webui.sh custom_install.sh /home/diffusion/
 RUN chown diffusion:diffusion /home/diffusion/webui.sh
 
 # install stable-diffusion-webui
@@ -25,16 +25,6 @@ USER diffusion
 RUN cd /home/diffusion/ \
     && chmod +x webui.sh && bash webui.sh --use-cpu all --skip-torch-cuda-test && rm webui.sh \
     && rm -rf /home/diffusion/.cache
-
-# install xformers
-USER root
-RUN cd /home/diffusion/stable-diffusion-webui/ \
-    && apt update && apt install -y g++ \
-    && su diffusion && . /home/diffusion/stable-diffusion-webui/venv/bin/activate \
-    && pip install xformers==0.0.12 \
-    && deactivate && exit \
-    && apt remove -y g++ && apt autoremove -y \
-    && rm -rf /var/lib/apt/lists/*
 
 # config
 USER diffusion

@@ -155,6 +155,8 @@ else
     exit 1
 fi
 
+# 自定义安装
+venv_dir=${venv_dir} bash custom_install.sh
 sed '$d' "${LAUNCH_SCRIPT}" > "prepare_${LAUNCH_SCRIPT}"
 
 if [[ ! -z "${ACCELERATE}" ]] && [ ${ACCELERATE}="True" ] && [ -x "$(command -v accelerate)" ]
