@@ -30,7 +30,7 @@ RUN cd /home/diffusion/ \
 USER root
 RUN cd /home/diffusion/stable-diffusion-webui/ \
     && apt update && apt install -y g++ \
-    && su diffusion && source /home/diffusion/stable-diffusion-webui/venv/bin/activate \
+    && su diffusion && . /home/diffusion/stable-diffusion-webui/venv/bin/activate \
     && pip install xformers==0.0.12 \
     && deactivate && exit \
     && apt remove -y g++ && apt autoremove -y \
