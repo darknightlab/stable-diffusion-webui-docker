@@ -23,8 +23,11 @@ RUN chown diffusion:diffusion /home/diffusion/webui.sh
 # install stable-diffusion-webui
 USER diffusion
 RUN cd /home/diffusion/ \
-    && chmod +x webui.sh && bash webui.sh --use-cpu all --skip-torch-cuda-test && rm webui.sh \
-    && rm -rf /home/diffusion/.cache
+    && chmod +x webui.sh && bash webui.sh --use-cpu all --skip-torch-cuda-test \
+    && rm webui.sh custom_install.sh \
+    && rm -rf /home/diffusion/.cache \
+    # 原版webui.sh, 前面的webui.sh是为了预安装
+    && wget https://raw.githubusercontent.com/AUTOMATIC1111/stable-diffusion-webui/master/webui.sh
 
 # config
 USER diffusion
