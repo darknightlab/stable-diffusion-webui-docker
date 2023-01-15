@@ -8,7 +8,7 @@ services:
     restart: always
     command: []
     environment:
-      - COMMANDLINE_ARGS=--listen --port 7860
+      - COMMANDLINE_ARGS=--listen --port 7860 --xformers
     ports:
       - "7860:7860"
     volumes:
