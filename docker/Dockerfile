@@ -37,5 +37,5 @@ RUN mkdir config && touch config/config.json config/ui-config.json config/style.
     ln -s /home/diffusion/stable-diffusion-webui/config/ui-config.json ui-config.json && \
     ln -s /home/diffusion/stable-diffusion-webui/config/style.csv style.csv
 
-ENTRYPOINT [ "logsave","/home/diffusion/stable-diffusion-webui/log/log.txt", "/home/diffusion/stable-diffusion-webui/venv/bin/python", "launch.py" ]
+ENTRYPOINT [ "/home/diffusion/stable-diffusion-webui/venv/bin/python", "launch.py" ]
 CMD []
