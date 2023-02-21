@@ -8,7 +8,7 @@ services:
     restart: always
     command: []
     environment:
-      - COMMANDLINE_ARGS=--listen --port 7860 --xformers
+      - COMMANDLINE_ARGS=--listen --port 7860 --xformers --enable-insecure-extension-access
     ports:
       - "7860:7860"
     volumes:
@@ -16,6 +16,7 @@ services:
       - ../data/outputs:/home/diffusion/stable-diffusion-webui/outputs
       - ../config:/home/diffusion/stable-diffusion-webui/config
       - ../data/cache:/home/diffusion/.cache
+      - ../data/extensions:/home/diffusion/stable-diffusion-webui/extensions
     deploy:
       resources:
         reservations:
