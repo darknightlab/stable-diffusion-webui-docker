@@ -12,7 +12,6 @@ services:
     ports:
       - "7860:7860"
     volumes:
-      # - ../data/log:/home/diffusion/stable-diffusion-webui/log
       - ../data/models:/home/diffusion/stable-diffusion-webui/models
       - ../data/outputs:/home/diffusion/stable-diffusion-webui/outputs
       - ../config:/home/diffusion/stable-diffusion-webui/config
